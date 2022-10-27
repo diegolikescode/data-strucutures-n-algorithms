@@ -1,1 +1,3 @@
 # MOVIE RECOMMENDATION IA
+
+> examples
