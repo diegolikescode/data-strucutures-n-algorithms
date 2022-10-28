@@ -1,7 +1,7 @@
 import pandas as pd
 from scipy.sparse import csr_matrix
 from sklearn.neighbors import NearestNeighbors
-# import numpy as np
+import numpy as np
 
 movies_df = pd.read_csv('./data/movies.csv', usecols=['movieId', 'title'], dtype={'movieId': 'int32', 'title': 'str'})
 
@@ -35,3 +35,12 @@ movie_features_df_matrix = csr_matrix(movie_features_df.values)
 model_knn = NearestNeighbors(metric='cosine', algorithm='brute')
 model_knn.fit(movie_features_df_matrix)
 
+query_index = np.random.choice(movie_features_df.shape[0])
+
+distances, indices = model_knn.kneighbors(movie_features_df.iloc[query_index, :].values.reshape(1, -1), n_neighbors=6)
+
+for i in range(0, len(distances.flatten())):
+  if i == 0:
+    print('recommendations for {0}: \n'.format(movie_features_df.index[query_index]))
+  else:
+    print('{0}: {1}, with distance of {2}:'.format(i, movie_features_df.index[indices.flatten()[i]], distances.flatten()[i]))
