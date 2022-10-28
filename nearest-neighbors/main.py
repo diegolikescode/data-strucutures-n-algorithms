@@ -1,4 +1,6 @@
 import pandas as pd
+from scipy.sparse import csr_matrix
+from sklearn.neighbors import NearestNeighbors
 # import numpy as np
 
 movies_df = pd.read_csv('./data/movies.csv', usecols=['movieId', 'title'], dtype={'movieId': 'int32', 'title': 'str'})
@@ -25,3 +27,11 @@ pd.set_option('display.float_format', lambda x: '%.3f' % x)
 
 popularity_threshold = 50
 rating_popular_movies = rating_with_total_rating_count.query('totalRatingCount >= @popularity_threshold')
+movie_features_df = rating_popular_movies.pivot_table(index='title', columns ='userId', values='rating').fillna(0)
+# print(movie_features_df.head())
+
+movie_features_df_matrix = csr_matrix(movie_features_df.values)
+
+model_knn = NearestNeighbors(metric='cosine', algorithm='brute')
+model_knn.fit(movie_features_df_matrix)
+
