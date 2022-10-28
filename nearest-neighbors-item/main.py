@@ -34,7 +34,7 @@ movie_features_df_matrix = csr_matrix(movie_features_df.values)
 
 model_knn = NearestNeighbors(metric='correlation', algorithm='brute')
 model_knn.fit(movie_features_df_matrix)
-g
+
 query_index = np.random.choice(movie_features_df.shape[0])
 
 distances, indices = model_knn.kneighbors(movie_features_df.iloc[query_index, :].values.reshape(1, -1), n_neighbors=6)
