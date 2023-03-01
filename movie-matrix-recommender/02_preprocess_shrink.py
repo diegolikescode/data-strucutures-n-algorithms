@@ -12,8 +12,8 @@ M = df.movie_idx.max() +1
 user_ids_count = Counter(df.userId)
 movie_ids_count = Counter(df.movie_idx)
 
-n = 10_000
-m = 2_000
+n = 1000
+m = 200
 
 user_ids = [u for u, _ in user_ids_count.most_common(n)]
 movie_ids = [m for m, _ in movie_ids_count.most_common(m)]

@@ -1,2 +1,3 @@
 **.csv
-bin
+movie-matrix-recommender/bin/*
+!.gitkeep

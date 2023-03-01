@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('rating.csv')
+df = pd.read_csv('data/rating.csv')
 
 df.userId = df.userId - 1
 
@@ -15,4 +15,4 @@ for movie_id in unique_movie_ids:
 df['movie_idx'] = df.apply(lambda row: movie2idx[row.movieId], axis=1)
 
 df = df.drop (columns=['timestamp'])
-df.to_csv('edited_rating.csv', index=False)
+df.to_csv('data/edited_rating.csv', index=False)

@@ -27,27 +27,26 @@ with open('bin/usermovie2rating_test.json', 'rb') as f:
 
 N = np.max(list(user2movie.keys())) + 1
 
-m1 = np.max(list(movie2user.keys()))
+m1 = np.max(list(movie2user.keys())) + 1
 m2 = np.max([m for (u, m), r in usermovie2rating_test.items()])
+M = max(m1, m2)
+print('N: ', N, ' M: ', M)
 
-M = max(m1, m2) + 1
-print('N: ', N, '    M: ', M)
-
-if N > 10_000:
+if M > 2000:
     print("N = ', N, ' are you sure you wanna continue? O(N) is a big ol' number")
 
-K = 25
+K = 20
 limit = 5
 neighbors = []
 averages = []
 deviations = []
-for i in range(N):
-    movies_i = user2movie[i]
-    movies_i_set = set(movies_i)
+for i in range(M):
+    users_i = movie2user[i]
+    users_i_set = set(users_i)
 
-    ratings_i = {movie: usermovie2rating[(i, movie)] for movie in movies_i}
+    ratings_i = {user: usermovie2rating[(user, i)] for user in users_i}
     avg_i = np.mean(list(ratings_i.values()))
-    dev_i = {movie: (rating - avg_i) for movie, rating in ratings_i.items()}
+    dev_i = {user: (rating - avg_i) for user, rating in ratings_i.items()}
     dev_i_values = np.array(list(dev_i.values()))
     sigma_i = np.sqrt(dev_i_values.dot(dev_i_values))
 
@@ -55,21 +54,21 @@ for i in range(N):
     deviations.append(dev_i)
 
     sl = SortedList()
-    for j in range(N):
+    for j in range(M):
         if j != i:
-            movies_j = user2movie[j]
-            movies_j_set = set(movies_j)
-            common_movies = (movies_i_set & movies_j_set)
-            if len(common_movies) > limit:
-                ratings_j = {movie: usermovie2rating[(
-                    j, movie)] for movie in movies_j}
+            users_j = movie2user[j]
+            users_j_set = set(users_j)
+            common_users = (users_i_set & users_j_set)
+            if len(common_users) > limit:
+                ratings_j = {user: usermovie2rating[(
+                    user, j)] for user in users_j}
                 avg_j = np.mean(list(ratings_j.values()))
-                dev_j = {movie: (rating - avg_j)
-                         for movie, rating in ratings_j.items()}
+                dev_j = {user: (rating - avg_j)
+                         for user, rating in ratings_j.items()}
                 dev_j_values = np.array(list(dev_j.values()))
                 sigma_j = np.sqrt(dev_j_values.dot(dev_j_values))
 
-                numerator = sum(dev_i[m] * dev_j[m] for m in common_movies)
+                numerator = sum(dev_i[m]*dev_j[m] for m in common_users)
                 w_ij = numerator / (sigma_i * sigma_j)
 
                 sl.add((-w_ij, j))
@@ -78,15 +77,16 @@ for i in range(N):
 
     neighbors.append(sl)
 
-    print(i)
+    if i % 1 == 0:
+        print(i)
 
 
-def predict(i, m):
+def predict(i, u):
     numerator = 0
     denominator = 0
     for neg_w, j in neighbors[i]:
         try:
-            numerator += -neg_w * deviations[j][m]
+            numerator += -neg_w * deviations[j][u]
             denominator += abs(neg_w)
         except KeyError:
             pass
@@ -95,7 +95,6 @@ def predict(i, m):
         prediction = averages[i]
     else:
         prediction = numerator / denominator + averages[i]
-
     prediction = min(5, prediction)
     prediction = max(0.5, prediction)
     return prediction
@@ -103,16 +102,16 @@ def predict(i, m):
 
 train_predictions = []
 train_targets = []
-for (i, m), target in usermovie2rating.items():
-    prediction = predict(i, m)
+for (u, m), target in usermovie2rating.items():
+    prediction = predict(m, u)
 
     train_predictions.append(prediction)
     train_targets.append(target)
 
 test_predictions = []
 test_targets = []
-for (i, m), target in usermovie2rating_test.items():
-    prediction = predict(i, m)
+for (u, m), target in usermovie2rating_test.items():
+    prediction = predict(m, u)
 
     test_predictions.append(prediction)
     test_targets.append(target)
