@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
 
 df = pd.read_csv('data/very_small_rating.csv')
+# df = pd.read_csv('data/edited_rating.csv')
 
 N = df.userId.max() + 1
 M = df.movieId.max() + 1
@@ -19,6 +20,8 @@ movie2user = {}
 usermovie2rating = {}
 
 count = 0
+
+
 def update_user2movie_and_movie2user(row):
     global count
     count += 1
@@ -38,11 +41,15 @@ def update_user2movie_and_movie2user(row):
         movie2user[j].append(i)
 
     usermovie2rating[(i, j)] = row.rating
+
+
 df_train.apply(update_user2movie_and_movie2user, axis=1)
 
 usermovie2rating_test = {}
 print('calling: update_usermovie2ratings_test')
 count = 0
+
+
 def update_usermovie2ratings_test(row):
     global count
     count += 1
@@ -51,7 +58,9 @@ def update_usermovie2ratings_test(row):
 
     i = int(row.userId)
     j = int(row.movie_idx)
-    usermovie2rating_test[i,j] = row.rating
+    usermovie2rating_test[i, j] = row.rating
+
+
 df_test.apply(update_usermovie2ratings_test, axis=1)
 
 with open('bin/user2movie.json', 'wb') as f:
