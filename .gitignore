@@ -1,4 +1,4 @@
-# Ignore build artifacts
+# build artifacts
 *.o
 *.obj
 *.so
@@ -8,20 +8,17 @@
 *.dylib
 *.dll
 *.lib
+main
 
-# Ignore CMake-generated files
+# CMake-generated files
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 Makefile
 
-# Ignore build directories
 build/
-dist/
-bin/
-lib/
 
-# Ignore temporary files and editor backups
+# temporary files and editor backups
 *.tmp
 *.log
 *.swp
@@ -29,22 +26,5 @@ lib/
 *~
 .DS_Store
 
-# Ignore debugger files
-*.dSYM/
-*.core
-*.stackdump
-
-# Ignore Clang-specific files
-*.clangd
-.clang-format
-.clang-tidy
-
-# Ignore user-specific settings
-.vscode/
-.idea/
-*.iml
-*.user
-
-main
 
 !.gitkeep
