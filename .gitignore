@@ -1,3 +1,50 @@
-**.csv
-movie-matrix-recommender/bin/*
+# Ignore build artifacts
+*.o
+*.obj
+*.so
+*.a
+*.out
+*.exe
+*.dylib
+*.dll
+*.lib
+
+# Ignore CMake-generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ignore build directories
+build/
+dist/
+bin/
+lib/
+
+# Ignore temporary files and editor backups
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Ignore debugger files
+*.dSYM/
+*.core
+*.stackdump
+
+# Ignore Clang-specific files
+*.clangd
+.clang-format
+.clang-tidy
+
+# Ignore user-specific settings
+.vscode/
+.idea/
+*.iml
+*.user
+
+main
+
 !.gitkeep

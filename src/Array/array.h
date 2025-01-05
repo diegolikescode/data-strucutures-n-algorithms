@@ -1,6 +1,9 @@
-#ifdef FOO_H_
-#define FOO_H_
+#ifndef ARRAY_H
+#define ARRAY_H
 
-void test_it();
+#include <stdio.h>
 
-#endif
+// Function declaration
+void printArray(int *array, int size);
+
+#endif  // ARRAY_H
