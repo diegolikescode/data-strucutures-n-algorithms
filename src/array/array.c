@@ -1,12 +1,9 @@
 #include "array.h"
 
+#include <errno.h>
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-// ARRAY
-// int capacity;
-// int length;
-// int* data;
 
 void print_array(Array* array) {
     for (int i = 0; i < array->length; i++) {
@@ -30,18 +27,29 @@ Array* init_array(int capacity) {
     return arr;
 }
 
-void push_array(Array* arr, int value) {
-    if (arr->length >= arr->capacity) {
+void push_array(Array* arr, int count, ...) {
+    va_list args;
+    va_start(args, count);
+
+    if ((count + arr->length) >= arr->capacity) {
+        errno = EINVAL;
         perror("Index out of bounds");
+        va_end(args);
         return;
     }
 
-    arr->data[arr->length] = value;
-    arr->length++;
+    for (int i = 0; i < count; i++) {
+        int a = va_arg(args, int);
+        arr->data[arr->length + i] = a;
+    }
+
+    arr->length += count;
+    va_end(args);
 }
 
 int pop_array(Array* arr) {
     if (arr->length <= 0) {
+        errno = EINVAL;
         perror("Index out of bounds");
         return 0;
     }
@@ -69,4 +77,21 @@ int shift_array(Array* arr) {
     return n;
 }
 
-Array* concat_array(Array* arr1, Array* arr2) { return NULL; }
+Array* concat_array(Array* arr1, Array* arr2) {
+    Array* a = init_array(arr1->capacity + arr2->capacity);
+    int len1 = arr1->length;
+    int len2 = arr2->length;
+
+    for (int i = 0; i < len1; i++) {
+        a->data[a->length++] = arr1->data[i];
+    }
+
+    printf("PRINT PARTIAL ARRAY with length: %d\n", len1);
+    print_array(a);
+
+    for (int i = 0; i < len2; i++) {
+        a->data[a->length++] = arr2->data[i];
+    }
+
+    return a;
+}

@@ -142,109 +142,53 @@ build_and_run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/build_and_run.dir/build.make CMakeFiles/build_and_run.dir/build
 .PHONY : build_and_run/fast
 
-#=============================================================================
-# Target rules for targets named main_test
-
-# Build rule for target.
-main_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main_test
-.PHONY : main_test
-
-# fast build rule for target.
-main_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/build
-.PHONY : main_test/fast
-
-#=============================================================================
-# Target rules for targets named run_tests
-
-# Build rule for target.
-run_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 run_tests
-.PHONY : run_tests
-
-# fast build rule for target.
-run_tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/build
-.PHONY : run_tests/fast
-
-src/Array/array.o: src/Array/array.c.o
-.PHONY : src/Array/array.o
+src/array/array.o: src/array/array.c.o
+.PHONY : src/array/array.o
 
 # target to build an object file
-src/Array/array.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Array/array.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/src/Array/array.c.o
-.PHONY : src/Array/array.c.o
+src/array/array.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/array/array.c.o
+.PHONY : src/array/array.c.o
 
-src/Array/array.i: src/Array/array.c.i
-.PHONY : src/Array/array.i
+src/array/array.i: src/array/array.c.i
+.PHONY : src/array/array.i
 
 # target to preprocess a source file
-src/Array/array.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Array/array.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/src/Array/array.c.i
-.PHONY : src/Array/array.c.i
+src/array/array.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/array/array.c.i
+.PHONY : src/array/array.c.i
 
-src/Array/array.s: src/Array/array.c.s
-.PHONY : src/Array/array.s
+src/array/array.s: src/array/array.c.s
+.PHONY : src/array/array.s
 
 # target to generate assembly for a file
-src/Array/array.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Array/array.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/src/Array/array.c.s
-.PHONY : src/Array/array.c.s
+src/array/array.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/array/array.c.s
+.PHONY : src/array/array.c.s
 
-src/main.o: src/main.c.o
-.PHONY : src/main.o
+src/main/main.o: src/main/main.c.o
+.PHONY : src/main/main.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/src/main.c.o
-.PHONY : src/main.c.o
+src/main/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main/main.c.o
+.PHONY : src/main/main.c.o
 
-src/main.i: src/main.c.i
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/src/main.c.i
-.PHONY : src/main.c.i
-
-src/main.s: src/main.c.s
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.c.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/src/main.c.s
-.PHONY : src/main.c.s
-
-tests/main_test.o: tests/main_test.c.o
-.PHONY : tests/main_test.o
-
-# target to build an object file
-tests/main_test.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/tests/main_test.c.o
-.PHONY : tests/main_test.c.o
-
-tests/main_test.i: tests/main_test.c.i
-.PHONY : tests/main_test.i
+src/main/main.i: src/main/main.c.i
+.PHONY : src/main/main.i
 
 # target to preprocess a source file
-tests/main_test.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/tests/main_test.c.i
-.PHONY : tests/main_test.c.i
+src/main/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main/main.c.i
+.PHONY : src/main/main.c.i
 
-tests/main_test.s: tests/main_test.c.s
-.PHONY : tests/main_test.s
+src/main/main.s: src/main/main.c.s
+.PHONY : src/main/main.s
 
 # target to generate assembly for a file
-tests/main_test.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_test.dir/build.make CMakeFiles/main_test.dir/tests/main_test.c.s
-.PHONY : tests/main_test.c.s
+src/main/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main/main.c.s
+.PHONY : src/main/main.c.s
 
 # Help Target
 help:
@@ -255,18 +199,13 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... build_and_run"
-	@echo "... run_tests"
 	@echo "... main"
-	@echo "... main_test"
-	@echo "... src/Array/array.o"
-	@echo "... src/Array/array.i"
-	@echo "... src/Array/array.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... tests/main_test.o"
-	@echo "... tests/main_test.i"
-	@echo "... tests/main_test.s"
+	@echo "... src/array/array.o"
+	@echo "... src/array/array.i"
+	@echo "... src/array/array.s"
+	@echo "... src/main/main.o"
+	@echo "... src/main/main.i"
+	@echo "... src/main/main.s"
 .PHONY : help
 
 

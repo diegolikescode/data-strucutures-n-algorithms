@@ -15,7 +15,7 @@ void print_array(Array* array);
 Array* init_array(int capacity);
 
 // add an item to the end of the array
-void push_array(Array* arr, int value);
+void push_array(Array* arr, int value, ...);
 
 // removes and returns the last item of the Array
 int pop_array(Array* arr);
