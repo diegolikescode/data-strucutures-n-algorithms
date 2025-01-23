@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "./algorithms/binary-search/binary-search.h"
 #include "./algorithms/linear-search/linear-search.h"
 #include "./array/array.h"
 
@@ -29,9 +30,32 @@ void test_linear_search() {
     linear_search(a2, a2len, 420);
 }
 
+void test_binary_search() {
+    int a1[] = {1, 2, 4, 8, 16, 32, 64, 128, 256};
+    int a2[] = {1, 2, 6, 21, 31, 49, 50, 51, 55, 66, 77};
+
+    size_t a1len = sizeof(a1) / sizeof(a1[0]);
+    size_t a2len = sizeof(a2) / sizeof(a1[0]);
+    int r = binary_search(a1, a1len, 8);
+    int r2 = binary_search(a2, a2len, 50);
+    int r3 = binary_search(a2, a2len, 55);
+    int r4 = binary_search(a2, a2len, 69);
+    int r5 = binary_search(a2, a2len, 3);
+    int r6 = binary_search(a2, a2len, 1);
+    int r7 = binary_search(a2, a2len, 77);
+    printf("r1 (find): %d\n", r);
+    printf("r2 (find): %d\n", r2);
+    printf("r3 (find): %d\n", r3);
+    printf("r4 (not_find): %d\n", r4);
+    printf("r5 (not_find): %d\n", r5);
+    printf("r6 (find): %d\n", r6);
+    printf("r7 (find): %d\n", r7);
+}
+
 int main() {
     // test_array();
-    test_linear_search();
+    // test_linear_search();
+    test_binary_search();
 
     return 0;
 }
