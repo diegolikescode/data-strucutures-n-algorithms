@@ -142,6 +142,30 @@ build_and_run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/build_and_run.dir/build.make CMakeFiles/build_and_run.dir/build
 .PHONY : build_and_run/fast
 
+src/algorithms/linear-search/linear-search.o: src/algorithms/linear-search/linear-search.c.o
+.PHONY : src/algorithms/linear-search/linear-search.o
+
+# target to build an object file
+src/algorithms/linear-search/linear-search.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/algorithms/linear-search/linear-search.c.o
+.PHONY : src/algorithms/linear-search/linear-search.c.o
+
+src/algorithms/linear-search/linear-search.i: src/algorithms/linear-search/linear-search.c.i
+.PHONY : src/algorithms/linear-search/linear-search.i
+
+# target to preprocess a source file
+src/algorithms/linear-search/linear-search.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/algorithms/linear-search/linear-search.c.i
+.PHONY : src/algorithms/linear-search/linear-search.c.i
+
+src/algorithms/linear-search/linear-search.s: src/algorithms/linear-search/linear-search.c.s
+.PHONY : src/algorithms/linear-search/linear-search.s
+
+# target to generate assembly for a file
+src/algorithms/linear-search/linear-search.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/algorithms/linear-search/linear-search.c.s
+.PHONY : src/algorithms/linear-search/linear-search.c.s
+
 src/array/array.o: src/array/array.c.o
 .PHONY : src/array/array.o
 
@@ -166,29 +190,53 @@ src/array/array.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/array/array.c.s
 .PHONY : src/array/array.c.s
 
-src/main/main.o: src/main/main.c.o
-.PHONY : src/main/main.o
+src/dsa.o: src/dsa.c.o
+.PHONY : src/dsa.o
 
 # target to build an object file
-src/main/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main/main.c.o
-.PHONY : src/main/main.c.o
+src/dsa.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dsa.c.o
+.PHONY : src/dsa.c.o
 
-src/main/main.i: src/main/main.c.i
-.PHONY : src/main/main.i
+src/dsa.i: src/dsa.c.i
+.PHONY : src/dsa.i
 
 # target to preprocess a source file
-src/main/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main/main.c.i
-.PHONY : src/main/main.c.i
+src/dsa.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dsa.c.i
+.PHONY : src/dsa.c.i
 
-src/main/main.s: src/main/main.c.s
-.PHONY : src/main/main.s
+src/dsa.s: src/dsa.c.s
+.PHONY : src/dsa.s
 
 # target to generate assembly for a file
-src/main/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main/main.c.s
-.PHONY : src/main/main.c.s
+src/dsa.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/dsa.c.s
+.PHONY : src/dsa.c.s
+
+src/queue/queue.o: src/queue/queue.c.o
+.PHONY : src/queue/queue.o
+
+# target to build an object file
+src/queue/queue.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/queue/queue.c.o
+.PHONY : src/queue/queue.c.o
+
+src/queue/queue.i: src/queue/queue.c.i
+.PHONY : src/queue/queue.i
+
+# target to preprocess a source file
+src/queue/queue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/queue/queue.c.i
+.PHONY : src/queue/queue.c.i
+
+src/queue/queue.s: src/queue/queue.c.s
+.PHONY : src/queue/queue.s
+
+# target to generate assembly for a file
+src/queue/queue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/queue/queue.c.s
+.PHONY : src/queue/queue.c.s
 
 # Help Target
 help:
@@ -200,12 +248,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... build_and_run"
 	@echo "... main"
+	@echo "... src/algorithms/linear-search/linear-search.o"
+	@echo "... src/algorithms/linear-search/linear-search.i"
+	@echo "... src/algorithms/linear-search/linear-search.s"
 	@echo "... src/array/array.o"
 	@echo "... src/array/array.i"
 	@echo "... src/array/array.s"
-	@echo "... src/main/main.o"
-	@echo "... src/main/main.i"
-	@echo "... src/main/main.s"
+	@echo "... src/dsa.o"
+	@echo "... src/dsa.i"
+	@echo "... src/dsa.s"
+	@echo "... src/queue/queue.o"
+	@echo "... src/queue/queue.i"
+	@echo "... src/queue/queue.s"
 .PHONY : help
 
 

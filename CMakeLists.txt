@@ -1,4 +1,4 @@
-set( executable main )
+set(executable main)
 
 cmake_minimum_required(VERSION 3.10)
 
