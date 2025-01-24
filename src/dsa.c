@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "./algorithms/binary-search/binary-search.h"
+#include "./algorithms/crystal-ball/crystal-ball.h"
 #include "./algorithms/linear-search/linear-search.h"
 #include "./array/array.h"
 
@@ -52,10 +53,25 @@ void test_binary_search() {
     printf("r7 (find): %d\n", r7);
 }
 
+void test_crystal_ball() {
+    int* ar = (int*)malloc(100 * sizeof(int));
+    for (int i = 0; i < 100; i++) {
+        if (i < 67) {
+            ar[i] = 0;
+        } else {
+            ar[i] = 1;
+        }
+    }
+
+    size_t l = 100;
+    int r = find_index_crystal_ball_breaks(ar, l);
+}
+
 int main() {
     // test_array();
     // test_linear_search();
-    test_binary_search();
+    // test_binary_search();
+    test_crystal_ball();
 
     return 0;
 }
