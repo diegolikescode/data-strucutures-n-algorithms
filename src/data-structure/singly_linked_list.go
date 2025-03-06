@@ -1,35 +1,30 @@
 package datastructure
 
-type Node[T any] struct {
+type Node[T comparable] struct {
 	Data T
 	Next *Node[T]
 }
 
-type SinglyLinkedList[T any] struct {
+type SinglyLinkedList[T comparable] struct {
 	Head   *Node[T]
 	Length int
 }
 
 func (s *SinglyLinkedList[T]) Append(data T) {
-	newNode := Node[T]{
-		Data: data,
-		Next: nil,
-	}
+	newNode := InitNode(data)
 
 	if s.Length == 0 {
-		s.Head = &newNode
+		s.Head = newNode
 		s.Length++
 		return
 	}
 
-	curr := *s.Head
+	curr := s.Head
 	for curr.Next != nil {
-		curr = *curr.Next
+		curr = curr.Next
 	}
-	curr.Next = &newNode
-}
-
-func (s *SinglyLinkedList[T]) Prepend() {
+	curr.Next = newNode
+	s.Length++
 }
 
 func (s *SinglyLinkedList[T]) Pop() *Node[T] {
@@ -44,14 +39,26 @@ func (s *SinglyLinkedList[T]) Pop() *Node[T] {
 	return node
 }
 
-func (s *SinglyLinkedList[T]) Search() {
+func (s *SinglyLinkedList[T]) SearchData(data T) *Node[T] {
+	if s.Length <= 0 {
+		return nil
+	}
+
+	curr := s.Head
+	for curr != nil {
+		if curr.Data == data {
+			return curr
+		}
+		curr = curr.Next
+	}
+	return nil
 }
 
-func InitNode[T any](data T) *Node[T] {
+func InitNode[T comparable](data T) *Node[T] {
 	return &Node[T]{Data: data, Next: nil}
 }
 
-func InitSinglyLinkedList[T any]() SinglyLinkedList[T] {
+func InitSinglyLinkedList[T comparable]() SinglyLinkedList[T] {
 	return SinglyLinkedList[T]{
 		Head:   nil,
 		Length: 0,
